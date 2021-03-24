@@ -1,0 +1,86 @@
+$f_sans: helvetica, sans-serif, verdana;
+$f_mono: 'Courier 10 Pitch', 'Mono Uralic', 'Courier New', Courier;
+$f_pacifico: 'Pacifico', $f_sans;
+
+$alizarin: #fc4e53;
+$alizarin2: #bd3b3e;
+
+$chartreuse: #d6de23;
+$chartreuse2: #a3cd39;
+
+$aqua: #21e097;
+$aqua2: #11c766;
+
+$mustard: #edcc0a;
+
+$brown: #764623;
+$blue: #4369bb;
+$purple: #401652;
+
+$transition: 500ms;
+
+@mixin position($t, $r, $b, $l)
+{
+    @if ($t != x) { top: $t; }
+    @if ($r != x) { right: $r; }
+    @if ($b != x) { bottom: $b; }
+    @if ($l != x) { left: $l; }
+}
+
+@mixin size($w, $mW, $h, $mH)
+{
+    @if ($w != x)
+    {
+        @if ($mW == x)
+        {
+            width: $w;
+        }
+        @else
+        {
+            #{$mW}-width: $w;
+        }
+    }
+    @if ($h != x)
+    {
+        @if ($mH == x)
+        {
+            height: $h;
+        }
+        @else
+        {
+            #{$mH}-height: $h;
+        }
+    }
+}
+
+@mixin define-font($name, $weight, $style, $file, $id)
+{
+    @font-face
+    {
+        font-family: $name;
+        font-weight: $weight;
+        font-style: $style;
+
+        src: url('#{$file}.eot');
+        src: url('#{$file}.eot?#iefix') format('embedded-opentype'),
+        url('#{$file}.woff2') format('woff2'),
+        url('#{$file}.woff') format('woff'),
+        url('#{$file}.ttf') format('truetype'),
+        url('#{$file}.svg##{$id}') format('svg');
+    }
+}
+
+@mixin define-icon-font($name, $file, $id)
+{
+    @font-face
+    {
+        font-family: $name;
+        src:url('#{$file}.eot?#{$id}');
+        src:url('#{$file}.eot?#iefix#{$id}') format('embedded-opentype'),
+            url('#{$file}.woff?#{$id}') format('woff'),
+            url('#{$file}.ttf?#{$id}') format('truetype'),
+            url('#{$file}.svg?##{$id}icomoon') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
